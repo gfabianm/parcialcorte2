@@ -9,7 +9,7 @@
 <body class="bg-light">
 
 <div class="container mt-4">
-    <div class="card shadow p-4">
+    <div class="card shadow p-4 border-0 rounded-3">
         <h2 class="text-primary mb-4 text-center">
             Bienvenido, <span th:text="${estudiante.primerNombre + ' ' + estudiante.primerApellido}"></span>
         </h2>
@@ -63,6 +63,18 @@
                 <div class="col-md-6">
                     <label class="form-label fw-bold">Teléfono:</label>
                     <input type="text" th:field="*{telefono}" class="form-control" required>
+                </div>
+            </div>
+
+            <!-- Contraseña -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Nueva Contraseña:</label>
+                    <input type="password" th:field="*{password}" class="form-control" placeholder="Ingrese una nueva contraseña">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Confirmar Contraseña:</label>
+                    <input type="password" name="confirmPassword" class="form-control" placeholder="Repita la contraseña">
                 </div>
             </div>
 
