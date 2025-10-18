@@ -13,7 +13,7 @@
 
     <div class="card p-4 shadow-sm">
         <h5 class="mb-3 text-primary">Datos del Estudiante</h5>
-        <p><strong>Nombre:</strong> 
+        <p><strong>Nombre:</strong>
             <span th:text="${estudiante.primerNombre + ' ' + estudiante.segundoNombre + ' ' + estudiante.primerApellido + ' ' + estudiante.segundoApellido}"></span>
         </p>
         <p><strong>Documento:</strong> <span th:text="${estudiante.numeroDocumento}"></span></p>
@@ -25,64 +25,85 @@
 
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
-                <tr>
-                    <th>Competencia</th>
-                    <th>Puntaje</th>
-                    <th>Nivel</th>
-                </tr>
+            <tr>
+                <th>Competencia</th>
+                <th>Puntaje</th>
+                <th>Nivel</th>
+            </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Puntaje Global</td>
-                    <td th:text="${calificacion.puntaje}"></td>
-                    <td th:text="${calificacion.saberProPuntajeNivel}"></td>
-                </tr>
-                <tr>
-                    <td>Comunicación Escrita</td>
-                    <td th:text="${calificacion.comunicacionEscrita}"></td>
-                    <td th:text="${calificacion.comunicacionEscritaNivel}"></td>
-                </tr>
-                <tr>
-                    <td>Razonamiento Cuantitativo</td>
-                    <td th:text="${calificacion.razonamientoCuantitativo}"></td>
-                    <td th:text="${calificacion.razonamientoCuantitativoNivel}"></td>
-                </tr>
-                <tr>
-                    <td>Lectura Crítica</td>
-                    <td th:text="${calificacion.lecturaCritica}"></td>
-                    <td th:text="${calificacion.lecturaCriticaNivel}"></td>
-                </tr>
-                <tr>
-                    <td>Competencias Ciudadanas</td>
-                    <td th:text="${calificacion.competenciasCiudadanas}"></td>
-                    <td th:text="${calificacion.competenciasCiudadanasNivel}"></td>
-                </tr>
-                <tr>
-                    <td>Inglés</td>
-                    <td th:text="${calificacion.ingles}"></td>
-                    <td th:text="${calificacion.inglesNivel}"></td>
-                </tr>
-                <tr>
-                    <td>Formulación de Proyectos de Ingeniería</td>
-                    <td th:text="${calificacion.formulacionProyectosIngenieria}"></td>
-                    <td th:text="${calificacion.formulacionProyectosIngenieriaNivel}"></td>
-                </tr>
-                <tr>
-                    <td>Pensamiento Científico - Matemáticas y Estadística</td>
-                    <td th:text="${calificacion.pensamientoCientificoMatematicasEstadistica}"></td>
-                    <td th:text="${calificacion.pensamientoCientificoMatematicasEstadisticaNivel}"></td>
-                </tr>
-                <tr>
-                    <td>Diseño de Software</td>
-                    <td th:text="${calificacion.disenoSoftware}"></td>
-                    <td th:text="${calificacion.disenoSoftwareNivel}"></td>
-                </tr>
-                <tr>
-                    <td><strong>Nivel Inglés Global</strong></td>
-                    <td colspan="2" th:text="${calificacion.nivelIngles}"></td>
-                </tr>
+            <tr>
+                <td>Puntaje Global</td>
+                <td th:text="${calificacion.puntaje}"></td>
+                <td th:text="${calificacion.saberProPuntajeNivel}"></td>
+            </tr>
+            <tr>
+                <td>Comunicación Escrita</td>
+                <td th:text="${calificacion.comunicacionEscrita}"></td>
+                <td th:text="${calificacion.comunicacionEscritaNivel}"></td>
+            </tr>
+            <tr>
+                <td>Razonamiento Cuantitativo</td>
+                <td th:text="${calificacion.razonamientoCuantitativo}"></td>
+                <td th:text="${calificacion.razonamientoCuantitativoNivel}"></td>
+            </tr>
+            <tr>
+                <td>Lectura Crítica</td>
+                <td th:text="${calificacion.lecturaCritica}"></td>
+                <td th:text="${calificacion.lecturaCriticaNivel}"></td>
+            </tr>
+            <tr>
+                <td>Competencias Ciudadanas</td>
+                <td th:text="${calificacion.competenciasCiudadanas}"></td>
+                <td th:text="${calificacion.competenciasCiudadanasNivel}"></td>
+            </tr>
+            <tr>
+                <td>Inglés</td>
+                <td th:text="${calificacion.ingles}"></td>
+                <td th:text="${calificacion.inglesNivel}"></td>
+            </tr>
+            <tr>
+                <td>Formulación de Proyectos de Ingeniería</td>
+                <td th:text="${calificacion.formulacionProyectosIngenieria}"></td>
+                <td th:text="${calificacion.formulacionProyectosIngenieriaNivel}"></td>
+            </tr>
+            <tr>
+                <td>Pensamiento Científico - Matemáticas y Estadística</td>
+                <td th:text="${calificacion.pensamientoCientificoMatematicasEstadistica}"></td>
+                <td th:text="${calificacion.pensamientoCientificoMatematicasEstadisticaNivel}"></td>
+            </tr>
+            <tr>
+                <td>Diseño de Software</td>
+                <td th:text="${calificacion.disenoSoftware}"></td>
+                <td th:text="${calificacion.disenoSoftwareNivel}"></td>
+            </tr>
+            <tr>
+                <td><strong>Nivel Inglés Global</strong></td>
+                <td colspan="2" th:text="${calificacion.nivelIngles}"></td>
+            </tr>
             </tbody>
         </table>
+
+        <!-- Bloque condicional de avisos -->
+        <div class="alert alert-info mt-4 text-center" 
+             th:if="${calificacion.puntaje >= 180 and calificacion.puntaje <= 210}">
+            <strong>¡Felicitaciones!</strong> Se exonera de la entrega del informe final de trabajo de grado, 
+            o de realizar Seminario de grado IV, con nota de <strong>4.5</strong>.
+        </div>
+
+        <div class="alert alert-success mt-4 text-center" 
+             th:if="${calificacion.puntaje >= 211 and calificacion.puntaje <= 240}">
+            <strong>¡Excelente desempeño!</strong> Se exonera de la entrega del informe final de trabajo de grado, 
+            o de realizar Seminario de grado IV, con nota de <strong>4.7</strong>. 
+            Además, se beca con un <strong>50%</strong> el valor de derechos de grado.
+        </div>
+
+        <div class="alert alert-success mt-4 text-center border border-success" 
+             th:if="${calificacion.puntaje > 240}">
+            <strong>¡Desempeño sobresaliente!</strong> Se exonera de la entrega del informe final de trabajo de grado, 
+            o de realizar Seminario de grado IV, con nota de <strong>5.0</strong>. 
+            Además, se beca con un <strong>100%</strong> el valor de derechos de grado.
+        </div>
     </div>
 
     <div th:if="${calificacion == null}" class="alert alert-warning mt-4 text-center">
